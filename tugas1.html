@@ -1,0 +1,87 @@
+<!DOCTYPE <html>
+
+<head>
+    <title>Tugas Basdat II</title>
+    <link rel="stylesheet" type="text/css" href="tugas1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top " id="mainNav">
+        <div class="container">
+            <a>Nurul Utami Rusli - D121181004</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link js-scroll-trigger text-white" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link js-scroll-trigger text-white" href="tugas1.html">Tugas 1 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger text-white" href="tugas2.html">Tugas 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger text-white" href="tugas3.html">Tugas 3</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br><br>
+    <h2>Prinsip Kerja Pemrosesan Query dalam Basis Data</h2>
+    <hr>
+    <h4>
+        Apa itu Query?
+    </h4>
+    <p>
+        Sebelum membahasa lebih jauh, maka sebaiknya kita bahas apa pengertian dari query itu sendiri. Ketika diterjemahkan dari bahasa Inggris ke bahasa Indonesia, kata query mengacu pada permintaan akan informasi. Lalu, apa itu query di bahasa pemrograman komputer?
+        Pada dasarnya, pengertian query dalam bahasa Inggris sehari-hari dan bahasa pemrograman komputer memiliki arti yang sama – kecuali di komputer, query meliputi informasi yang diterima atau diambil dari database. Bahasa pemrograman ini berguna untuk
+        memanipulasi data – menambah, menghapus, dan mengubah data.
+    </p>
+    <p>
+        Pada saat membuat query, Anda tidak bisa mengetikkan ‘request’ secara asal-asalan. Query ditulis berdasarkan pada sekumpulan pre-defined code sehingga database dapat memahami instruksi yang diminta. Kami menyebut kode ini sebagai bahasa query.
+    </p>
+    <p> Standar manajemen database adalah Structure Query Language (SQL). Satu hal yang harus Anda ingat, SQL berbeda dari MySQL: SQL merupakan bahasa query, sedangkan MySQL adalah software yang menggunakan bahasa tersebut. SQL memang dikenal sebagai software
+        database yang paling banyak digunakan. Namun, SQL tidak menjadi satu-satunya pilihan software. AQL, Datalog, dan DMX adalah contoh software database yang bisa Anda gunakan. </p>
+    <h4>Bagaimana Mengukur Biaya sebuah Query</h4>
+    <p>Biaya evaluasi kueri dapat diukur dari segi sejumlah sumber daya yang berbeda, termasuk akses disk, waktu CPU untuk menjalankan kueri, dan, dalam sistem database paralel dan terdistribusi, dan biaya komunikasi. Untuk database besar yang berada pada
+        disk magnetik, biaya I / O untuk mengakses data dari disk biasanya mendominasi biaya lainnya. Namun, sebagian besar data organisasi saat ini dapat disimpan pada solid-state drive (SSD) dalam perencana biaya. Dengan data residen dalam memori atau
+        pada SSD, biaya I / O tidak mendominasi keseluruhan biaya, dan kita harus menyertakan biaya CPU saat menghitung biaya evaluasi kueri.</p>
+    <h4>Bagaimana sebuah Sistem Database Mengevaluasi sebuah Ekspresi dan Multiple Ekspresi</h4>
+    <p>
+        Sekarang kita pertimbangkan cara mengevaluasi ekspresi yang berisi beberapa operasi. Jelas cara untuk mengevaluasi ekspresi adalah dengan mengevaluasi satu operasi pada satu waktu, dalam urutan yang sesuai. Hasil setiap evaluasi diwujudkan dalam hubungan
+        sementara untuk penggunaan selanjutnya. Kerugian dari pendekatan ini adalah kebutuhan untuk membangun hubungan sementara, yang (kecuali jika kecil) harus ditulis ke disk. Sebuah alternatif Pendekatannya adalah mengevaluasi beberapa operasi secara
+        bersamaan dalam satu jalur pipa, dengan hasil dari satu operasi diteruskan ke operasi berikutnya, tanpa perlu menyimpan hubungan sementara.
+    </p>
+    <p>A. Materialization</p>
+    <p>
+        Pendekatan materialisasi, dimulai dari operasi tingkat terendah dalam ekspresi. Sebagai contoh Input ke operator level terendah adalah relasi dalam database menyimpan hasilnya dalam hubungan sementara. Kita bisa menggunakan ini hubungan sementara untuk
+        menjalankan operasi pada tingkat berikutnya, di mana input sekarang bisa berupa relasi sementara atau relasi yang disimpan dalam database. Evaluasi seperti yang baru saja dijelaskan disebut evaluasi terwujud , karena hasil setiap operasi perantara
+        dibuat (terwujud) dan kemudian digunakan untuk evaluasi dari operasi tingkat berikutnya.
+    </p>
+    <p>B. Pipelining </p>
+    <p>
+        evaluasi ini dapat meningkatkan efisiensi kueri dengan mengurangi jumlah file sementara yang diproduksi. pengurangan ini dicapai dengan menggabungkan beberapa operasi relasional ke dalam operasi Pipelining, di mana hasil dari satu operasi diteruskan ke
+        operasi berikutnya di dalam pipa. Kita dapat mengimplementasikan pipeline dengan membangun satu operasi kompleks yang membatasi operasi. Meskipun pendekatan ini mungkin layak Untuk beberapa situasi yang sering terjadi, sebaiknya gunakan kembali
+        kode secara umum untuk operasi individu dalam pembangunan pipa.
+    </p>
+    <p>
+        Membuat pipeline operasi dapat memberikan dua manfaat:
+    </p>
+    <p>
+        1. Menghilangkan biaya membaca dan menulis hubungan sementara, mengurangi biaya evaluasi kueri. Perhatikan bahwa rumus biaya yang kita lihat sebelumnya untuk masing-masing Pengoperasian termasuk biaya membaca hasil dari disk. Jika input ke file operator
+        o i adalah pipelined dari operator sebelumnya o j , biaya o i seharusnya tidak termasuk biaya membaca input dari disk; rumus biaya yang kami lihat sebelumnya dapat dimodifikasi sesuai.
+    </p>
+    <p>2. Dapat mulai menghasilkan hasil kueri dengan cepat, jika operator root kuerirencana evaluasi digabungkan dalam satu pipeline dengan masukannya. Ini bisa sangat berguna jika hasilnya ditampilkan kepada pengguna seperti yang dibuat, karena sebaliknya
+        di sana mungkin terjadi penundaan yang lama sebelum pengguna melihat hasil kueri apa pun.</p>
+    <br><br>
+
+</body>
+
+</html>
