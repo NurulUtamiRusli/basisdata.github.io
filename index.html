@@ -25,16 +25,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item ">
-                        <a class="nav-link js-scroll-trigger" href="tugas1.html">Tugas 1 <span class="sr-only">(current)</span></a>
+                        <a class="nav-link js-scroll-trigger" href="index.html">Tugas 1 <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="tugas2.html">Tugas 2</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="tugas3.html">Tugas 3</a>
-                    </li>
-
-
                     <!--<li class="nav-item">
                         <a class="nav-link js-scroll-trigger text-white" href="#">About Me</a>
                     </li>-->
@@ -52,7 +44,7 @@
             <div class="carousel-item active">
                 <img src="img/data.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5></h5>
+                    <h3></h3>
                     <p></p>
                 </div>
             </div>
@@ -74,12 +66,66 @@
         </a>
     </div>
     <br>
+    <h3>Transaction</h3>
     <p>
-        Basis Data II
+        Transaksi adalah sebuah unit eksekusi dari program yang mengakses dan memungkinkan memperbahrui berbagai macam tipe data. Pada saat eksekusi transaksi, database bisa saja menjadi tidak konsisten. Namun pada saat transaksi sampai pada level commited, maka
+        databasenya harus konsisten. Untuk memastikan integritas data tetap terjaga dan transaksi dapat berjalan dengan baik, maka sistem database harus menjaga properti – properti yang terdapat di dalam transaksi. Properti memastikan perilaku yang dapat
+        diprediksi dan menguatkan peran transaksi sebagai konsep all or nothing yang didesain untuk mengurangi manajemen load ketika ada banyak variabel. Properti – properti di dalam databse dapat disingkat menjadi ACID (Atomicity, Consistency, Isolation,
+        Durability).
+        <ul>
+            <li>
+                <b>Atomicity:</b> transaksi dilakukan sekali dan sifatnya atomik, artinya merupakan satu kesatuan tunggal yang tidak dapat dipisah, melaksanakan pekerjaannya sampai selesai atau tidak sama sekali
+            </li>
+            <li>
+                <b>Consistency:</b> Jika basis data awalnya dalam keadaan konsisten maka pelaksanaan transaksi sendirinya juga harus meninggalkan basis data tetap dalam status konsisten
+            </li>
+            <li>
+                <b>Isolation:</b> memastikan bahwa secara bersamaan eksekusi transaksi terisolasi dari yang lain
+            </li>
+            <li>
+                <b>Durability:</b> begitu transaksi telah dilaksanakan (di-commit) maka perubahan yang dilakukan tidak akan hilang dan tetap terjaga (durable), sekalipun ada kegagalan sistem.
+            </li>
+        </ul>
     </p>
-    <div class="tulis">
-        departemen teknik informatika <br> fakultas teknik <br> universitas hasanuddin
-    </div>
+    <hr>
+    <h3>Koperasi Simpan Pinjam</h3>
+    <p>
+        contoh kasus transaksi yang saya ambil yaitu transaksi pada koperasi simpan pinjam. Dimisalakan A adalah koperasi yang meminjamkan uang sebesar $10 kepada peminjam yang dimisalkan B. Dimisalkan saldo pada A adalah $50 sedangkan saldo pada B adalah $3.
+        maka transaksi tersebut dapat didefinisikan sebagai berikut.
+        <ol>
+            <li>Read(A)</li>
+            <li>A := A - 10</li>
+            <li>Write (A)</li>
+            <li>Read (B)</li>
+            <li>B := B + 10</li>
+            <li>Write (B)</li>
+        </ol>
+    </p>
+    <p>
+        Berdasarkan contoh, ditinjau dari kebutuhan properti ACID-nya, maka :
+        <ul>
+            <li>Kebutuhan Atomik (Atomicity Requeirements) : </li>
+            Jika transaksi gagal diantara tahap ke-3 dan tahap ke-6, maka sistem harus memastikan bahwa perubahan yang terjadi tidak disimpan ke database, atau akan terjadi inkonsistensi data. Dengan kata lain, selesaikan transaksi atau tidak sama sekali, karna jika
+            salah 1 dari ke enam system diatas tidak dilakukan maka akan menghasilkan kekeliruan pada data. pada contoh diatas, algoritmanya adalah - Kurangi jumlah sald pada koperasi - Tambahkan umlah saldo pada A<br>
+            <li>Kebutuhan Konsistensi (Consistency Requierements) : </li>
+            Total jumlah rekening A + B harus tetap, tidak berubah setelah proses eksekusi transaksi. Seperti permisalan diatas, saldo awal dari A adalah $50 sedangkan saldo awal di B adalah $3 Saldo sebelum transaksi = $50 + $3 = $53 <br> setelah dilakukan
+            transaksi, saldo A = $50 - $10 = $40. dan saldo B setelah dilakukan transaksi B = $3 + $10 = $13 <br> jadi $13 + $40 = $53. jadi total saldo A + B setelah trasaksi tetap sama ketika sebelum dilakukan transaksi.
+            <li>Kebutuhan Isolasi (Isolation) :</li>
+            Jika diantara tahap ke-3 dan tahap ke-6 ada transaksi lain yang disisipkan, maka akan dapat menyebabkan inkonsistensi terhadap database (jumlah rekening A+B bisa jadi berkurang dari yang seharusnya). Untuk menghindari hal itu, maka transaksi bisa dieksekusi
+            secara serial. Tapi walaubagaimanapun, eksekusi banyak transaksi secara bersama – sama (konkuren) memiliki banyak keuntungan.
+            <li>kebutuhan Durabilitas (Durability) : </li>
+            Pada saat eksekusi transaksi selesai dilaksanakan, dan user yang melakukan transaksi sudah diberitahu bahwa transfer yang dilakukannya sukses, maka harus dipastikan bahwa tidak ada kesalahan sistem yang akan terjadi yang menyebabkan hilangnya data yang
+            berkaitan dengan proses transfer tersebut .
+
+
+
+
+
+
+        </ul>
+    </p>
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

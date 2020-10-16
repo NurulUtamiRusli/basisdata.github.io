@@ -28,21 +28,17 @@ a {
     color: black;
 }
 
-.carousel {
-    margin-top: 50px;
-}
-
-p {
+h2 {
     font-family: 'Dancing Script', cursive;
     text-align: justify;
-    font-size: 100px;
+    font-size: 70px;
     text-align: center;
     color: #00587a;
 }
 
-.tulis {
-    font-family: 'Amatic SC', cursive;
-    text-align: center;
+h3 {
+    text-align: justify;
     font-size: 50px;
-    color: #0d7377;
+    text-align: center;
+    color: #00587a;
 }
