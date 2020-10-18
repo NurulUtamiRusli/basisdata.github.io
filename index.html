@@ -41,12 +41,13 @@
             <h1 class="display-4">Basis Data II</h1>
             <hr>
             <p class="lead"><i>contoh Kasus Eksekusi Transaksi dengan Requirement ACID.</i></p>
-            <button type="button" class="btn btn-primary btn-lg center-block" href="paragraf" role="button">Learn more</button>
+            <!--<button type="button" class="btn btn-primary btn-lg center-block" href="#paragraf" role="button">Learn more</button>!-->
         </div>
     </div>
 
     <br>
     <div id="paragraf">
+        <br><br><br>
         <h3>Transaksi</h3>
         <hr>
         <p>
@@ -54,20 +55,23 @@
             databasenya harus konsisten. Untuk memastikan integritas data tetap terjaga dan transaksi dapat berjalan dengan baik, maka sistem database harus menjaga properti – properti yang terdapat di dalam transaksi. Properti memastikan perilaku yang
             dapat diprediksi dan menguatkan peran transaksi sebagai konsep all or nothing yang didesain untuk mengurangi manajemen load ketika ada banyak variabel. Properti – properti di dalam databse dapat disingkat menjadi ACID (Atomicity, Consistency,
             Isolation, Durability).
-            <ul>
-                <li>
-                    <b>Atomicity:</b> transaksi dilakukan sekali dan sifatnya atomik, artinya merupakan satu kesatuan tunggal yang tidak dapat dipisah, melaksanakan pekerjaannya sampai selesai atau tidak sama sekali
-                </li>
-                <li>
-                    <b>Consistency:</b> Jika basis data awalnya dalam keadaan konsisten maka pelaksanaan transaksi sendirinya juga harus meninggalkan basis data tetap dalam status konsisten
-                </li>
-                <li>
-                    <b>Isolation:</b> memastikan bahwa secara bersamaan eksekusi transaksi terisolasi dari yang lain
-                </li>
-                <li>
-                    <b>Durability:</b> begitu transaksi telah dilaksanakan (di-commit) maka perubahan yang dilakukan tidak akan hilang dan tetap terjaga (durable), sekalipun ada kegagalan sistem.
-                </li>
-            </ul>
+            <div class="point">
+                <ul>
+                    <li>
+                        <b>Atomicity:</b> transaksi dilakukan sekali dan sifatnya atomik, artinya merupakan satu kesatuan tunggal yang tidak dapat dipisah, melaksanakan pekerjaannya sampai selesai atau tidak sama sekali
+                    </li>
+                    <li>
+                        <b>Consistency:</b> Jika basis data awalnya dalam keadaan konsisten maka pelaksanaan transaksi sendirinya juga harus meninggalkan basis data tetap dalam status konsisten
+                    </li>
+                    <li>
+                        <b>Isolation:</b> memastikan bahwa secara bersamaan eksekusi transaksi terisolasi dari yang lain
+                    </li>
+                    <li>
+                        <b>Durability:</b> begitu transaksi telah dilaksanakan (di-commit) maka perubahan yang dilakukan tidak akan hilang dan tetap terjaga (durable), sekalipun ada kegagalan sistem.
+                    </li>
+                </ul>
+            </div>
+
         </p>
         <br>
 
@@ -90,27 +94,27 @@
         <p>
             Berdasarkan contoh, ditinjau dari kebutuhan properti ACID-nya, maka :
             <ul>
-                <li>Kebutuhan Atomik (Atomicity Requeirements) : </li>
-                <p>
-                    Jika transaksi gagal diantara tahap ke-3 dan tahap ke-6, maka sistem harus memastikan bahwa perubahan yang terjadi tidak disimpan ke database, atau akan terjadi inkonsistensi data. Dengan kata lain, selesaikan transaksi atau tidak sama sekali, karna jika
-                    salah 1 dari ke enam system diatas tidak dilakukan maka akan menghasilkan kekeliruan pada data. pada contoh diatas, algoritmanya adalah - Kurangi jumlah sald pada koperasi - Tambahkan umlah saldo pada A
-                </p>
-
-                <li>Kebutuhan Konsistensi (Consistency Requierements) : </li>
-                <p>
-                    Total jumlah rekening A + B harus tetap, tidak berubah setelah proses eksekusi transaksi. Seperti permisalan diatas, saldo awal dari A adalah $50 sedangkan saldo awal di B adalah $3 Saldo sebelum transaksi = $50 + $3 = $53 <br> setelah
-                    dilakukan transaksi, saldo A = $50 - $10 = $40. dan saldo B setelah dilakukan transaksi B = $3 + $10 = $13 <br> jadi $13 + $40 = $53. jadi total saldo A + B setelah trasaksi tetap sama ketika sebelum dilakukan transaksi.
-                </p>
-                <li>Kebutuhan Isolasi (Isolation) : </li>
-                <p>
-                    Jika diantara tahap ke-3 dan tahap ke-6 ada transaksi lain yang disisipkan, maka akan dapat menyebabkan inkonsistensi terhadap database (jumlah rekening A+B bisa jadi berkurang dari yang seharusnya). Untuk menghindari hal itu, maka transaksi bisa dieksekusi
-                    secara serial. Tapi walaubagaimanapun, eksekusi banyak transaksi secara bersama – sama (konkuren) memiliki banyak keuntungan.
-                </p>
-                <li>kebutuhan Durabilitas (Durability) : </li>
-                <p>
-                    Pada saat eksekusi transaksi selesai dilaksanakan, dan user yang melakukan transaksi sudah diberitahu bahwa transfer yang dilakukannya sukses, maka harus dipastikan bahwa tidak ada kesalahan sistem yang akan terjadi yang menyebabkan hilangnya data yang
-                    berkaitan dengan proses transfer tersebut .
-                </p>
+                <div class="point">
+                    <li>Kebutuhan Atomik (Atomicity Requeirements): </li>
+                    <p>
+                        Jika transaksi gagal diantara tahap ke-3 dan tahap ke-6, maka sistem harus memastikan bahwa perubahan yang terjadi tidak disimpan ke database, atau akan terjadi inkonsistensi data. Dengan kata lain, selesaikan transaksi atau tidak sama sekali, karna jika
+                        salah 1 dari ke enam system diatas tidak dilakukan maka akan menghasilkan kekeliruan pada data. pada contoh diatas, algoritmanya adalah - Kurangi jumlah sald pada koperasi - Tambahkan umlah saldo pada A
+                    </p>
+                    <li>Kebutuhan Konsistensi (Consistency Requierements) : </li>
+                    <p>
+                        Total jumlah rekening A + B harus tetap, tidak berubah setelah proses eksekusi transaksi. Seperti permisalan diatas, saldo awal dari A adalah $50 sedangkan saldo awal di B adalah $3 Saldo sebelum transaksi = $50 + $3 = $53 <br>                        setelah dilakukan transaksi, saldo A = $50 - $10 = $40. dan saldo B setelah dilakukan transaksi B = $3 + $10 = $13 <br> jadi $13 + $40 = $53. jadi total saldo A + B setelah trasaksi tetap sama ketika sebelum dilakukan transaksi.
+                    </p>
+                    <li>Kebutuhan Isolasi (Isolation) : </li>
+                    <p>
+                        Jika diantara tahap ke-3 dan tahap ke-6 ada transaksi lain yang disisipkan, maka akan dapat menyebabkan inkonsistensi terhadap database (jumlah rekening A+B bisa jadi berkurang dari yang seharusnya). Untuk menghindari hal itu, maka transaksi bisa dieksekusi
+                        secara serial. Tapi walaubagaimanapun, eksekusi banyak transaksi secara bersama – sama (konkuren) memiliki banyak keuntungan.
+                    </p>
+                    <li>kebutuhan Durabilitas (Durability) : </li>
+                    <p>
+                        Pada saat eksekusi transaksi selesai dilaksanakan, dan user yang melakukan transaksi sudah diberitahu bahwa transfer yang dilakukannya sukses, maka harus dipastikan bahwa tidak ada kesalahan sistem yang akan terjadi yang menyebabkan hilangnya data yang
+                        berkaitan dengan proses transfer tersebut .
+                    </p>
+                </div>
             </ul>
         </p>
     </div>
