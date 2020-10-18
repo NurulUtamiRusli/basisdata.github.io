@@ -69,8 +69,8 @@ h3 {
 
 hr {
     border-color: #f05f40;
-    width: 70px;
-    border-width: 3px;
+    width: 100px;
+    border-width: 5px;
 }
 
 .jumbotron .btn {
@@ -80,6 +80,11 @@ hr {
     padding-right: 20px;
     padding-left: 20px;
     margin-top: 30px;
+}
+
+.jumbotron .btn:hover {
+    color: rgb(9, 9, 41);
+    background-color: #ac791be7;
 }
 
 p {
